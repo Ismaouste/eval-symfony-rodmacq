@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company index{% endblock %}
+{% block title %}Liste des entreprises{% endblock %}
 
 {% block body %}
-    <h1>Company index</h1>
+    <h1>Liste des entreprises</h1>
+    <div>    <a href="{{ path('company_new') }}" class="btn btn-success">Create new</a>
+</div></br>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Siret</th>
-                <th>Address</th>
-                <th>ZipCode</th>
-                <th>City</th>
-                <th>actions</th>
+                <th>Addresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +29,8 @@
                 <td>{{ company.zipCode }}</td>
                 <td>{{ company.city }}</td>
                 <td>
-                    <a href="{{ path('company_show', {'id': company.id}) }}">show</a>
-                    <a href="{{ path('company_edit', {'id': company.id}) }}">edit</a>
+                    <a href="{{ path('company_show', {'id': company.id}) }}" class="btn btn-primary">Afficher</a>
+                    <a href="{{ path('company_edit', {'id': company.id}) }}" class="btn btn-secondary">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +41,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('company_new') }}">Create new</a>
 {% endblock %}

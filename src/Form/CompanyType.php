@@ -6,6 +6,9 @@ use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Customer;
+
 
 class CompanyType extends AbstractType
 {
@@ -17,6 +20,12 @@ class CompanyType extends AbstractType
             ->add('address')
             ->add('zipCode')
             ->add('city')
+            ->add('customer', EntityType::class, [
+                'class' => Customer::class,
+                'choice_label' => 'email',
+                'multiple' => true,
+                'label' => 'Client'
+            ])
         ;
     }
 

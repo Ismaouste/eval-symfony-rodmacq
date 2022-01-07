@@ -6,6 +6,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Customer;
 use Faker\Factory;
+use App\Entity\Company;
+
 
 class AppFixtures extends Fixture
 {
@@ -24,6 +26,20 @@ class AppFixtures extends Fixture
                 ->setPhone($faker->mobileNumber);
 
             $manager->persist($customer);
+        }
+
+        for($i = 0;$i < 10;$i++)
+
+        {
+
+            $company = (new Company())
+                ->setName($faker->company)
+                ->setSiret($faker->siret)
+                ->setAddress($faker->streetAddress)
+                ->setZipCode($faker->postcode)
+                ->setCity($faker->city);
+
+            $manager->persist($company);
         }
 
         $manager->flush();
